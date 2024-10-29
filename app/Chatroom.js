@@ -1,9 +1,17 @@
 import { Box } from '@mui/material';
 
+import MessageContainer from './MessageContainer';
+import InputBar from './InputBar';
+
 const Chatroom = () => {
   return (
-    <Box border="1px solid">
-      Chatroom
+    <Box height="100%" display="flex" flexDirection="column" minHeight={0}>
+      <Box flex={1} minHeight={0} border="1px solid">
+        <MessageContainer />
+      </Box>
+      <Box height={72} border="1px solid">
+        <InputBar />
+      </Box>
     </Box>
   );
 }

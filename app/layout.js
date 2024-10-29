@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 import { Box } from '@mui/material';
 import "./globals.css";
 
+import ThemeProvider from './ThemeProvider';
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,7 +25,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Box width="100vw" height="100vh">
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </Box>
       </body>
     </html>
