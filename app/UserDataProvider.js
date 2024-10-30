@@ -3,7 +3,10 @@
 import { createContext, useState, useCallback, useMemo, useContext } from 'react';
 import { userMap } from '@/mockData/user';
 
-export const UserDataContext = createContext({});
+export const UserDataContext = createContext({
+  users: {},
+  updateUserData: () => {},
+});
 export const useUserDataContext = () => useContext(UserDataContext);
 
 const UserDataProvider = (props) => {
