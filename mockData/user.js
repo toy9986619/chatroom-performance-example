@@ -1,19 +1,17 @@
-const userList = [
-  {
-    id: 1,
+export const userMap = {
+  userId1: {
+    id: 'userId1',
     name: 'User 1',
     status: 'online',
   },
-  {
-    id: 2,
+  userId2: {
+    id: 'userId2',
     name: 'User 2',
     status: 'offline',
   },
-  {
-    id: 3,
+  userId3: {
+    id: 'userId3',
     name: 'User 3',
     status: 'offline',
   },
-];
-
-export default userList;
+};

@@ -12,7 +12,7 @@ const ThemeProvider = (props) => {
   const { children } = props;
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme} defaultMode='system'>
       {children}
     </MuiThemeProvider>
   );

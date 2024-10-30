@@ -1,9 +1,22 @@
 import { Box } from '@mui/material';
 
-const MessageContainer = () => {
+import MessageItem from './MessageItem';
+import { messageList } from '@/mockData/chatroomMessage';
+
+const MessageContainer = (props) => {
+  const { roomId } = props;
+
+  const messages = messageList.filter((message) => message.chatroomId === roomId);
+
   return (
     <Box>
-      Message Container
+      {messages.map((messageItem) => (
+        <MessageItem
+          key={messageItem.id}
+          message={messageItem.message}
+          senderId={messageItem.userId}
+        />
+      ))}
     </Box>
   );
 };

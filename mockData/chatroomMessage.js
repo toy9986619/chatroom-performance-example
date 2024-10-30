@@ -1,21 +1,23 @@
-const messageList = [
+export const messageList = [
   {
-    id: 1,
-    chatroomId: 1,
-    userId: 1,
+    id: 'messageId1',
+    chatroomId: 'roomId1',
+    userId: 'userId1',
     message: 'Hello, how are you?',
     createdAt: '2020-07 - 01T10: 00: 00.000Z',
   },
   {
-    id: 2,
-    chatroomId: 1,
-    userId: 2,
+    id: 'messageId2',
+    chatroomId: 'roomId1',
+    userId: 'userId2',
     message: 'I am fine, thank you!',
+    createdAt: '2020-07 - 01T10: 01: 00.000Z',
   },
   {
-    id: 3,
-    chatroomId: 1,
-    userId: 1,
+    id: 'messageId3',
+    chatroomId: 'roomId1',
+    userId: 'userId1',
     message: 'Good to hear that!',
+    createdAt: '2020-07 - 01T10: 02: 00.000Z',
   },
 ];

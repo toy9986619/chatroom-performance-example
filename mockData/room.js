@@ -1,14 +1,14 @@
 const roomList = [
   {
-    id: 1,
+    id: 'roomId1',
     name: 'Room 1',
   },
   {
-    id: 2,
+    id: 'roomId2',
     name: 'Room 2',
   },
   {
-    id: 3,
+    id: 'roomId3',
     name: 'Room 3',
   },
 ];

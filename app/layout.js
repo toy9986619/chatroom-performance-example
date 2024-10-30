@@ -3,6 +3,12 @@ import { Box } from '@mui/material';
 import "./globals.css";
 
 import ThemeProvider from './ThemeProvider';
+import UserDataProvider from './UserDataProvider';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +32,9 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Box width="100vw" height="100vh">
           <ThemeProvider>
-            {children}
+            <UserDataProvider>
+              {children}
+            </UserDataProvider>
           </ThemeProvider>
         </Box>
       </body>
