@@ -11,6 +11,21 @@ const MessageItem = (props) => {
   const { users } = useUserDataContext();
 
   const sender = users[senderId];
+  const isOnline = sender.status === 'online';
+
+  const statusDot = (
+    <Box
+      position="absolute"
+      sx={{ zIndex: 1, bottom: '7%', right: '7%' }}
+      bgcolor={(theme) => {
+        return isOnline ? theme.palette.success.main : theme.palette.grey.A700;
+      }}
+      height="0.5rem"
+      width="0.5rem"
+      borderRadius="50%"
+      border="1px solid"
+    />
+  );
 
   const avatar = (
     <Box
@@ -21,8 +36,10 @@ const MessageItem = (props) => {
       alignItems="center"
       justifyContent="center"
       bgcolor={(theme) => theme.palette.primary.dark}
+      position="relative"
     >
       <PersonIcon />
+      {statusDot}
     </Box>
   );
 
