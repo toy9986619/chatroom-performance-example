@@ -11,7 +11,7 @@ export default function Home() {
   );
 
   const chatroom = (
-    <Chatroom />
+    <Chatroom roomId="roomId1" key="roomId1" />
   );
 
   const userList = (
