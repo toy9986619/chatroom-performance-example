@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
+import { nanoid } from 'nanoid';
 import { Box } from '@mui/material';
 
 import MessageContainer from './MessageContainer';
@@ -16,16 +17,18 @@ const Chatroom = (props) => {
   const messageContainerRef = useRef(null);
 
   const handleSend = useCallback((message) => {
+    const newMessage = {
+      id: nanoid(),
+      chatroomId: roomId,
+      message,
+      userId: 'userId1',
+      createAt: new Date().toISOString(),
+    };
+
     setMessages((prevMessages) => {
-      const newMessage = {
-        id: prevMessages.length + 1,
-        chatroomId: roomId,
-        message,
-        userId: 'userId1',
-        createAt: new Date().toISOString(),
-      };
       return [...prevMessages, newMessage];
     });
+    messageList.push(newMessage);
   }, [roomId]);
 
   return (

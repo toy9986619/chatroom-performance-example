@@ -17,6 +17,16 @@ const UserList = () => {
     });
   }, [updateUserData]);
 
+  const handleSaveUserName = useCallback((id, name) => {
+    updateUserData(id, (user) => {
+      return {
+        ...user,
+        name,
+      };
+    });
+  }
+  , [updateUserData]);
+
   return (
     <Box border="1px solid" height="100%">
       {Object.values(users).map((user) => (
@@ -26,6 +36,7 @@ const UserList = () => {
           name={user.name}
           status={user.status}
           onStatusChange={handleStatusChange}
+          onSaveUserName={handleSaveUserName}
         />
       ))}
     </Box>
