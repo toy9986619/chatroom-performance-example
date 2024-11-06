@@ -3,7 +3,6 @@ import { Box } from '@mui/material';
 import "./globals.css";
 
 import ThemeProvider from './ThemeProvider';
-import UserDataProvider from './UserDataProvider';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -32,9 +31,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Box width="100vw" height="100vh">
           <ThemeProvider>
-            <UserDataProvider>
-              {children}
-            </UserDataProvider>
+            {children}
           </ThemeProvider>
         </Box>
       </body>

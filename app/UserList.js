@@ -1,31 +1,46 @@
 'use client';
 
-import { useCallback } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { Box } from '@mui/material';
-import { useUserDataContext } from './UserDataProvider';
 import UserItem from './UserItem';
+import { userMapDataController, UPDATE_USER_MAP_EVENT } from '@/mockData/user';
 
 const UserList = () => {
-  const { users, updateUserData } = useUserDataContext();
+  const [users, setUsers] = useState(userMapDataController.getUserData());
 
   const handleStatusChange = useCallback((id, status) => {
-    updateUserData(id, (user) => {
+    const updater = (currentUser) => {
       return {
-        ...user,
+        ...currentUser,
         status,
       };
-    });
-  }, [updateUserData]);
+    };
+
+    userMapDataController.updateUserData(id, updater);
+  }, []);
 
   const handleSaveUserName = useCallback((id, name) => {
-    updateUserData(id, (user) => {
+    const updater = (currentUser) => {
       return {
-        ...user,
+        ...currentUser,
         name,
       };
-    });
-  }
-  , [updateUserData]);
+    };
+
+    userMapDataController.updateUserData(id, updater);
+  }, []);
+
+  useEffect(() => {
+    const updateHandler = () => {
+      setUsers(userMapDataController.getUserData());
+    };
+
+    document.addEventListener(UPDATE_USER_MAP_EVENT, updateHandler);
+
+    return () => {
+      document.removeEventListener(UPDATE_USER_MAP_EVENT, updateHandler);
+    };
+  }, []);
 
   return (
     <Box border="1px solid" height="100%">

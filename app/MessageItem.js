@@ -3,14 +3,14 @@
 import { Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
-import { useUserDataContext } from './UserDataProvider';
+import useUserData from './hooks/useUserData';
 
 const MessageItem = (props) => {
   const { message, senderId } = props;
 
-  const { users } = useUserDataContext();
+  const { getUserDataById } = useUserData();
 
-  const sender = users[senderId];
+  const sender = getUserDataById(senderId);
   const isOnline = sender.status === 'online';
 
   const statusDot = (
