@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, memo } from 'react';
 import { Box, Select, MenuItem, IconButton, FormControl, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -87,4 +87,4 @@ const UserItem = (props) => {
   );
 };
 
-export default UserItem;
+export default memo(UserItem);
