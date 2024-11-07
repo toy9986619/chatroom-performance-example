@@ -1,16 +1,32 @@
 'use client';
 
+import { memo } from 'react';
 import { Box, Typography } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 
 import { useUserDataContext } from './UserDataProvider';
 
+const withMessageUser = (Component) => {
+  const Wrapper = (props) => {
+    const { senderId } = props;
+
+    const { users } = useUserDataContext();
+
+    const sender = users[senderId];
+
+    return (
+      <Component sender={sender} {...props} />
+    )
+  };
+
+  Wrapper.displayName = `withMessageUser(${Component.displayName || Component.name})`;
+
+  return Wrapper;
+};
+
 const MessageItem = (props) => {
-  const { message, senderId } = props;
+  const { message, sender } = props;
 
-  const { users } = useUserDataContext();
-
-  const sender = users[senderId];
   const isOnline = sender.status === 'online';
 
   const statusDot = (
@@ -64,4 +80,4 @@ const MessageItem = (props) => {
   );
 };
 
-export default MessageItem;
+export default withMessageUser(memo(MessageItem));
